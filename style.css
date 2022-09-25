@@ -1,8 +1,37 @@
+#heading{
+    color: blue;
+    text-align: center;
+}
+#mid{
+    display: flex;
+    justify-content: center;
+}
 .ele{
     display: flex;
+    background-color: aqua;
+    margin: 20px;
+    width: 400px;
 }
-
-
+#todo{
+    display: flex;
+    flex-direction: column;;
+    justify-content: center;
+    align-items: center;
+}
+#input{
+    margin-right : 20px;
+}
 .a{
     margin-right: 50px;
+    padding: 10px;
+    border-radius: 5px;
+}
+#delete{
+    background-color: red;
+}
+#up{
+    background-color: blueviolet;
+}
+#down{
+    background-color: yellowgreen;
 }
