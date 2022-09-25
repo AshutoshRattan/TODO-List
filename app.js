@@ -2,11 +2,6 @@ let input = document.querySelector('#input')
 let button = document.querySelector('button')
 let p = document.querySelector('#todo')
 
-
-function ad(){
-    
-}
-
 try {
     let arr = JSON.parse(localStorage.getItem('text'))
     arr.forEach(text => {
@@ -48,42 +43,42 @@ try {
 
         up.addEventListener('click', function (e) {
             let prevSib = ele.previousElementSibling
-            console.log(prevSib)
+            //console.log(prevSib)
             if (prevSib) {
                 let arr = JSON.parse(localStorage.getItem('text'))
-                let indexOne = arr.indexof(text)
-                let indexTwo = arr.indexof(prevSib.children[0])
-                let temp2 = arr[indexTwo]
-                arr[indexTwo] = arr[indexOne]
-                arr[indexOne] = temp
+                let ind1 = arr.indexOf(ele.children[0].innerText)
+                let ind2 = arr.indexOf(prevSib.children[0].innerText)
+                let temp = arr[ind1]
+                arr[ind1] = arr[ind2]
+                arr[ind2] = temp
                 localStorage.setItem('text', JSON.stringify(arr))
-                console.log(arr)
 
-                let temp = todoText.innerText
+                temp = todoText.innerText
                 ele.children[0].innerText = prevSib.children[0].innerText
                 prevSib.children[0].innerText = temp
             }
-        })
+            }
+        )
 
         down.addEventListener('click', function (e) {
+
             let nextSib = ele.nextElementSibling
-            console.log(nextSib)
+            //console.log(prevSib)
             if (nextSib) {
                 let arr = JSON.parse(localStorage.getItem('text'))
-                let indexOne = arr.indexof(text)
-                let indexTwo = arr.indexof(nextSib.children[0])
-                let temp2 = arr[indexTwo]
-                arr[indexTwo] = arr[indexOne]
-                arr[indexOne] = temp2
-                console.log(arr)
+                let ind1 = arr.indexOf(ele.children[0].innerText)
+                let ind2 = arr.indexOf(nextSib.children[0].innerText)
+                let temp = arr[ind1]
+                arr[ind1] = arr[ind2]
+                arr[ind2] = temp
                 localStorage.setItem('text', JSON.stringify(arr))
 
-                let temp = todoText.innerText
+                temp = todoText.innerText
                 ele.children[0].innerText = nextSib.children[0].innerText
                 nextSib.children[0].innerText = temp
             }
         })
-    });
+    })
     
 } catch (error) {
     
@@ -124,7 +119,7 @@ button.addEventListener('click', function (e) {
     
     input.value = ""
     let arr = JSON.parse(localStorage.getItem('text'))
-    console.log(arr)
+    //console.log(arr)
     if (arr) {
         arr.push(text)
         localStorage.setItem('text', JSON.stringify(arr))
@@ -143,9 +138,17 @@ button.addEventListener('click', function (e) {
 
     up.addEventListener('click', function(e){
         let prevSib = ele.previousElementSibling
-        console.log(prevSib)
+        //console.log(prevSib)
         if(prevSib){
-            let temp = todoText.innerText
+            let arr = JSON.parse(localStorage.getItem('text'))
+            let ind1 = arr.indexOf(ele.children[0].innerText)
+            let ind2 = arr.indexOf(prevSib.children[0].innerText)
+            let temp = arr[ind1]
+            arr[ind1] = arr[ind2]
+            arr[ind2] = temp
+            localStorage.setItem('text', JSON.stringify(arr))
+
+            temp = todoText.innerText
             ele.children[0].innerText = prevSib.children[0].innerText
             prevSib.children[0].innerText = temp
         }
@@ -153,9 +156,17 @@ button.addEventListener('click', function (e) {
 
     down.addEventListener('click', function (e) {
         let nextSib = ele.nextElementSibling
-        console.log(nextSib)
+        //console.log(prevSib)
         if (nextSib) {
-            let temp = todoText.innerText
+            let arr = JSON.parse(localStorage.getItem('text'))
+            let ind1 = arr.indexOf(ele.children[0].innerText)
+            let ind2 = arr.indexOf(nextSib.children[0].innerText)
+            let temp = arr[ind1]
+            arr[ind1] = arr[ind2]
+            arr[ind2] = temp
+            localStorage.setItem('text', JSON.stringify(arr))
+
+            temp = todoText.innerText
             ele.children[0].innerText = nextSib.children[0].innerText
             nextSib.children[0].innerText = temp
         }
