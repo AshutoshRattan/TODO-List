@@ -16,21 +16,21 @@ try {
         X.id = "delete"
 
         let up = document.createElement('p')
-        up.innerText = "^"
+        up.innerText = "↑"
         up.className = 'a'
         up.id = "up"
 
         let down = document.createElement('p')
-        down.innerText = "!^"
+        down.innerText = "↓"
         down.className = 'a'
         down.id = "down"
 
         let ele = document.createElement('div')
         ele.className = 'ele'
-        ele.appendChild(todoText)
         ele.appendChild(X)
         ele.appendChild(up)
         ele.appendChild(down)
+        ele.appendChild(todoText)
         p.appendChild(ele)
 
         X.addEventListener('click', function (e) {
@@ -46,16 +46,16 @@ try {
             //console.log(prevSib)
             if (prevSib) {
                 let arr = JSON.parse(localStorage.getItem('text'))
-                let ind1 = arr.indexOf(ele.children[0].innerText)
-                let ind2 = arr.indexOf(prevSib.children[0].innerText)
+                let ind1 = arr.indexOf(ele.children[3].innerText)
+                let ind2 = arr.indexOf(prevSib.children[3].innerText)
                 let temp = arr[ind1]
                 arr[ind1] = arr[ind2]
                 arr[ind2] = temp
                 localStorage.setItem('text', JSON.stringify(arr))
 
                 temp = todoText.innerText
-                ele.children[0].innerText = prevSib.children[0].innerText
-                prevSib.children[0].innerText = temp
+                ele.children[3].innerText = prevSib.children[3].innerText
+                prevSib.children[3].innerText = temp
             }
             }
         )
@@ -66,16 +66,16 @@ try {
             //console.log(prevSib)
             if (nextSib) {
                 let arr = JSON.parse(localStorage.getItem('text'))
-                let ind1 = arr.indexOf(ele.children[0].innerText)
-                let ind2 = arr.indexOf(nextSib.children[0].innerText)
+                let ind1 = arr.indexOf(ele.children[3].innerText)
+                let ind2 = arr.indexOf(nextSib.children[3].innerText)
                 let temp = arr[ind1]
                 arr[ind1] = arr[ind2]
                 arr[ind2] = temp
                 localStorage.setItem('text', JSON.stringify(arr))
 
                 temp = todoText.innerText
-                ele.children[0].innerText = nextSib.children[0].innerText
-                nextSib.children[0].innerText = temp
+                ele.children[3].innerText = nextSib.children[3].innerText
+                nextSib.children[3].innerText = temp
             }
         })
     })
@@ -84,7 +84,8 @@ try {
     
 }
 
-button.addEventListener('click', function (e) {
+input.addEventListener('keypress', function (e) {
+    if(e.key !== 'Enter') return
     if (input.value === "") return;
 
     let text = input.value;
@@ -100,21 +101,21 @@ button.addEventListener('click', function (e) {
     X.id = "delete"
 
     let up = document.createElement('p')
-    up.innerText = "^"
+    up.innerText = "↑"
     up.className = 'a'
     up.id = "up"
 
     let down = document.createElement('p')
-    down.innerText = "!^"
+    down.innerText = "↓"
     down.className = 'a'
     down.id = "down"
 
     let ele = document.createElement('div')
     ele.className = 'ele'
-    ele.appendChild(todoText)
     ele.appendChild(X)
     ele.appendChild(up)
     ele.appendChild(down)
+    ele.appendChild(todoText)
     p.appendChild(ele)
     
     input.value = ""
@@ -141,16 +142,16 @@ button.addEventListener('click', function (e) {
         //console.log(prevSib)
         if(prevSib){
             let arr = JSON.parse(localStorage.getItem('text'))
-            let ind1 = arr.indexOf(ele.children[0].innerText)
-            let ind2 = arr.indexOf(prevSib.children[0].innerText)
+            let ind1 = arr.indexOf(ele.children[3].innerText)
+            let ind2 = arr.indexOf(prevSib.children[3].innerText)
             let temp = arr[ind1]
             arr[ind1] = arr[ind2]
             arr[ind2] = temp
             localStorage.setItem('text', JSON.stringify(arr))
 
             temp = todoText.innerText
-            ele.children[0].innerText = prevSib.children[0].innerText
-            prevSib.children[0].innerText = temp
+            ele.children[3].innerText = prevSib.children[3].innerText
+            prevSib.children[3].innerText = temp
         }
     })
 
@@ -159,16 +160,107 @@ button.addEventListener('click', function (e) {
         //console.log(prevSib)
         if (nextSib) {
             let arr = JSON.parse(localStorage.getItem('text'))
-            let ind1 = arr.indexOf(ele.children[0].innerText)
-            let ind2 = arr.indexOf(nextSib.children[0].innerText)
+            let ind1 = arr.indexOf(ele.children[3].innerText)
+            let ind2 = arr.indexOf(nextSib.children[3].innerText)
             let temp = arr[ind1]
             arr[ind1] = arr[ind2]
             arr[ind2] = temp
             localStorage.setItem('text', JSON.stringify(arr))
 
             temp = todoText.innerText
-            ele.children[0].innerText = nextSib.children[0].innerText
-            nextSib.children[0].innerText = temp
+            ele.children[3].innerText = nextSib.children[3].innerText
+            nextSib.children[3].innerText = temp
+        }
+    })
+
+})
+
+
+button.addEventListener('click', function (e) {
+    if (input.value === "") return;
+
+    let text = input.value;
+
+    let todoText = document.createElement('p')
+    todoText.innerText = text
+    todoText.className = 'a'
+    todoText.id = "text"
+
+    let X = document.createElement('p')
+    X.innerText = "X"
+    X.className = 'a'
+    X.id = "delete"
+
+    let up = document.createElement('p')
+    up.innerText = "↑"
+    up.className = 'a'
+    up.id = "up"
+
+    let down = document.createElement('p')
+    down.innerText = "↓"
+    down.className = 'a'
+    down.id = "down"
+
+    let ele = document.createElement('div')
+    ele.className = 'ele'
+    ele.appendChild(X)
+    ele.appendChild(up)
+    ele.appendChild(down)
+    ele.appendChild(todoText)
+    p.appendChild(ele)
+
+    input.value = ""
+    let arr = JSON.parse(localStorage.getItem('text'))
+    //console.log(arr)
+    if (arr) {
+        arr.push(text)
+        localStorage.setItem('text', JSON.stringify(arr))
+    }
+    else {
+        localStorage.setItem('text', JSON.stringify([text]))
+    }
+
+    X.addEventListener('click', function (e) {
+        let arr = JSON.parse(localStorage.getItem('text'))
+        arr = arr.filter(e => e !== text)
+
+        localStorage.setItem('text', JSON.stringify(arr))
+        p.removeChild(ele)
+    })
+
+    up.addEventListener('click', function (e) {
+        let prevSib = ele.previousElementSibling
+        //console.log(prevSib)
+        if (prevSib) {
+            let arr = JSON.parse(localStorage.getItem('text'))
+            let ind1 = arr.indexOf(ele.children[3].innerText)
+            let ind2 = arr.indexOf(prevSib.children[3].innerText)
+            let temp = arr[ind1]
+            arr[ind1] = arr[ind2]
+            arr[ind2] = temp
+            localStorage.setItem('text', JSON.stringify(arr))
+
+            temp = todoText.innerText
+            ele.children[3].innerText = prevSib.children[3].innerText
+            prevSib.children[3].innerText = temp
+        }
+    })
+
+    down.addEventListener('click', function (e) {
+        let nextSib = ele.nextElementSibling
+        //console.log(prevSib)
+        if (nextSib) {
+            let arr = JSON.parse(localStorage.getItem('text'))
+            let ind1 = arr.indexOf(ele.children[3].innerText)
+            let ind2 = arr.indexOf(nextSib.children[3].innerText)
+            let temp = arr[ind1]
+            arr[ind1] = arr[ind2]
+            arr[ind2] = temp
+            localStorage.setItem('text', JSON.stringify(arr))
+
+            temp = todoText.innerText
+            ele.children[3].innerText = nextSib.children[3].innerText
+            nextSib.children[3].innerText = temp
         }
     })
 

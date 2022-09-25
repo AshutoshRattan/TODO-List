@@ -9,7 +9,7 @@
 .ele{
     display: flex;
     background-color: aqua;
-    margin: 20px;
+    margin: 10px;
     width: 400px;
 }
 #todo{
@@ -20,11 +20,14 @@
 }
 #input{
     margin-right : 20px;
+    height: 40px;
+    width: 300px;
 }
 .a{
-    margin-right: 50px;
+    margin-right: 5px;
     padding: 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 #delete{
     background-color: red;
