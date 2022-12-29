@@ -33,7 +33,7 @@ try {
         ele.appendChild(todoText)
         p.appendChild(ele)
 
-        X.addEventListener('click', function (e) {
+        X.addEventListener('click', function (event) {
             let arr = JSON.parse(localStorage.getItem('text'))
             arr = arr.filter(e => e !== text)
 
@@ -41,7 +41,7 @@ try {
             p.removeChild(ele)
         })
 
-        up.addEventListener('click', function (e) {
+        up.addEventListener('click', function (event) {
             let prevSib = ele.previousElementSibling
             //console.log(prevSib)
             if (prevSib) {
@@ -60,7 +60,7 @@ try {
             }
         )
 
-        down.addEventListener('click', function (e) {
+        down.addEventListener('click', function (event) {
 
             let nextSib = ele.nextElementSibling
             //console.log(prevSib)
@@ -84,8 +84,8 @@ try {
     
 }
 
-input.addEventListener('keypress', function (e) {
-    if(e.key !== 'Enter') return
+input.addEventListener('keypress', function (event) {
+    if(event.key !== 'Enter') return
     if (input.value === "") return;
 
     let text = input.value;
@@ -129,7 +129,7 @@ input.addEventListener('keypress', function (e) {
         localStorage.setItem('text', JSON.stringify([text]))
     }
 
-    X.addEventListener('click', function (e){
+    X.addEventListener('click', function (event){
         let arr = JSON.parse(localStorage.getItem('text'))
         arr = arr.filter(e => e !== text)
 
@@ -137,7 +137,7 @@ input.addEventListener('keypress', function (e) {
         p.removeChild(ele)
     })
 
-    up.addEventListener('click', function(e){
+    up.addEventListener('click', function(event){
         let prevSib = ele.previousElementSibling
         //console.log(prevSib)
         if(prevSib){
@@ -155,7 +155,7 @@ input.addEventListener('keypress', function (e) {
         }
     })
 
-    down.addEventListener('click', function (e) {
+    down.addEventListener('click', function (event) {
         let nextSib = ele.nextElementSibling
         //console.log(prevSib)
         if (nextSib) {
@@ -176,7 +176,7 @@ input.addEventListener('keypress', function (e) {
 })
 
 
-button.addEventListener('click', function (e) {
+button.addEventListener('click', function (event) {
     if (input.value === "") return;
 
     let text = input.value;
@@ -220,7 +220,7 @@ button.addEventListener('click', function (e) {
         localStorage.setItem('text', JSON.stringify([text]))
     }
 
-    X.addEventListener('click', function (e) {
+    X.addEventListener('click', function (event) {
         let arr = JSON.parse(localStorage.getItem('text'))
         arr = arr.filter(e => e !== text)
 
@@ -228,7 +228,7 @@ button.addEventListener('click', function (e) {
         p.removeChild(ele)
     })
 
-    up.addEventListener('click', function (e) {
+    up.addEventListener('click', function (event) {
         let prevSib = ele.previousElementSibling
         //console.log(prevSib)
         if (prevSib) {
@@ -246,7 +246,7 @@ button.addEventListener('click', function (e) {
         }
     })
 
-    down.addEventListener('click', function (e) {
+    down.addEventListener('click', function (event) {
         let nextSib = ele.nextElementSibling
         //console.log(prevSib)
         if (nextSib) {
